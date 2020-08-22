@@ -1,0 +1,55 @@
+{
+    "name": "chinstrap-cms/plugins-dynamic-search",
+    "type": "library",
+    "description": "Dynamic search plugin for Chinstrap CMS",
+    "keywords": [
+        "chinstrap-cms",
+        "plugins-dynamic-search"
+    ],
+    "homepage": "https://github.com/chinstrap-cms/plugins-dynamic-search",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew Daly",
+            "email": "450801+matthewbdaly@users.noreply.github.com",
+            "homepage": "https://matthewdaly.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~7.2",
+        "chinstrap-cms/core": "dev-master"
+    },
+    "require-dev": {
+        "infection/infection": "^0.17.2",
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.3",
+        "php-coveralls/php-coveralls": "^2.2",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^3.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chinstrap\\Plugins\\DynamicSearch\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Chinstrap\\Plugins\\DynamicSearch\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs src tests",
+        "fix-style": "phpcbf src tests",
+        "psalm": "psalm"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
