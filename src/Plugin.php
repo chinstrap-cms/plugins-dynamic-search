@@ -4,28 +4,34 @@ declare(strict_types=1);
 
 namespace Chinstrap\Plugins\DynamicSearch;
 
-use League\Route\Router;
 use Chinstrap\Core\Contracts\Plugin as PluginContract;
+use Chinstrap\Core\Events\RegisterStaticRoutes;
+use Chinstrap\Plugins\DynamicSearch\Listeners\RegisterSearchIndexRoute;
+use League\Event\EmitterInterface;
 
 final class Plugin implements PluginContract
 {
     /**
-     * @var Router
+     * @var EmitterInterface
      */
-    private $router;
+    private $emitter;
 
-    public function __construct(Router $router)
+    /**
+     * @var RegisterSearchIndexRoute
+     */
+    private $listener;
+
+    public function __construct(EmitterInterface $emitter, RegisterSearchIndexRoute $listener)
     {
-        $this->router = $router;
+        $this->emitter = $emitter;
+        $this->listener = $listener;
     }
 
     public function register(): void
     {
-        $this->registerRoute();
-    }
-
-    private function registerRoute(): void
-    {
-        $this->router->get('/search/index', 'Chinstrap\Plugins\DynamicSearch\Http\Controllers\SearchController::index');
+        $this->emitter->addListener(
+            RegisterStaticRoutes::class,
+            $this->listener
+        );
     }
 }
