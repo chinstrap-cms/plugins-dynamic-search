@@ -1,0 +1,2 @@
+plugins:
+  - Chinstrap\Plugins\DynamicSearch\Plugin
