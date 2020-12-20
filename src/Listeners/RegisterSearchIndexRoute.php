@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Chinstrap\Plugins\DynamicSearch\Listeners;
 
 use Chinstrap\Core\Listeners\BaseListener;
-use League\Event\EventInterface;
+use Laminas\EventManager\EventInterface;
 use League\Route\Router;
 
 final class RegisterSearchIndexRoute extends BaseListener
@@ -20,7 +20,7 @@ final class RegisterSearchIndexRoute extends BaseListener
         $this->router = $router;
     }
 
-    public function handle(EventInterface $event)
+    public function __invoke(EventInterface $event): void
     {
         $this->router->get('/search/index', 'Chinstrap\Plugins\DynamicSearch\Http\Controllers\SearchController::index');
     }
