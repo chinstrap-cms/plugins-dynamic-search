@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chinstrap\Tests;
+namespace Chinstrap\Plugins\DynamicSearch\Tests;
 
 use Chinstrap\Core\Kernel\AppFactory;
 use Chinstrap\Core\Kernel\ContainerFactory;
